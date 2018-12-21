@@ -1,0 +1,9 @@
+body{background:#534741;font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+ul, li{margin:0; padding:0; list-style:none;}  
+
+.menu_head{border:1px solid #998675;}  
+.menu_body {width:184px;border-right:1px solid #998675;border-bottom:1px solid #998675;border-left:1px solid #998675;}  
+.menu_body li{background:#534741;} 
+.menu_body li a{color:#FFFFFF; text-decoration:none; padding:10px; display:block;}  
+.menu_body li.alt{background:#793f28;}  
+.menu_body {display:none; width:184px;border-right:1px solid #998675;border-bottom:1px solid #998675;border-left:1px solid #998675;} 

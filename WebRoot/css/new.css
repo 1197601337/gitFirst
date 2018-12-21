@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+.nav{
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+	height: 200px;
+}
+.manager1{
+	background: pink;
+	margin-left:auto;
+	margin-right:auto;
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+.manager2{
+	margin-left:auto;
+	margin-right:auto;
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+.manager2 a{
+	text-decoration: none;
+	cursor: pointer;
+	color: blue;
+}
+.manager2 a:hover{
+	color:red;
+}
+.manager2 a:visited {
+	color: purple;
+}

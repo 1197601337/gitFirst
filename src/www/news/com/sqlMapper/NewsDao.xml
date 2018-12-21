@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.news.com.dao.NewsDao">
+	<resultMap type="www.news.com.model.News" id="newsMap">
+		<id column="n_id" property="id"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="source" property="resource"/>
+		<result column="issueTime" property="date"/>
+		<association property="caregory" column="category_id" javaType="www.news.com.model.Caregory" select="getCaregory">
+			<id column="id" property="id"/>
+	        <result column="categoryName" property="categoryName"/>
+		</association>
+	</resultMap>
+	<insert id="addNews" parameterType="www.news.com.model.News" useGeneratedKeys="true"   keyProperty="n_id">
+		insert into news (title,content,issueTime,source,category_id) values (#{title},#{content},#{date},#{resource},#{caregory.id})
+	</insert>
+	<update id="updateNews" parameterType="www.news.com.model.News">
+		update news set title = #{title},content = #{content},source = #{resource},category_id = #{caregory.id} where n_id = #{id}
+	</update>
+	<delete id="deleteNews"  parameterType="www.news.com.model.News">
+		delete from news where n_id = #{id}
+	</delete>
+	<select id="findNewsById" parameterType="java.lang.Integer" resultMap="newsMap">
+		select * from news where n_id = #{id}
+	</select>
+	<select id="findNewsCount" resultType="java.lang.Integer">
+		select count(*) from news
+	</select>
+	<select id="findAllNews" resultMap="newsMap">
+		select * from news
+	</select>
+	<select id="findNews" parameterType="java.lang.Integer" resultMap="newsMap">
+		select * from news where category_id = #{caregory.id}
+	</select>
+	
+	<select id="findTitle" parameterType="java.lang.String" resultMap="newsMap">
+		select * from news where title = #{title}
+	</select>
+	 <select id="getCaregory" parameterType="int" resultType="www.news.com.model.Caregory">
+       select * from category where id = #{id}
+   </select>
+</mapper>

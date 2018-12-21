@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.news.com.dao.CaregoryDao">
+<!-- 一对多配置 -->
+<resultMap id="categoryMap" type="www.news.com.model.Caregory">
+	<id column="id" property="id"/>
+	<result column="categoryName" property="categoryName"/>
+	<collection property="news" ofType="www.news.com.model.News" column="id">
+		<id column="n_id" property="id"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="source" property="resource"/>
+		<result column="issueTime" property="date"/>
+	</collection>
+</resultMap>
+	<insert id="addCaregory" parameterType="www.news.com.model.Caregory" useGeneratedKeys="true"   keyProperty="id">
+	 	insert into category (categoryName) values (#{categoryName})
+	</insert>
+	<update id="updateCaregory" parameterType="www.news.com.model.Caregory">
+		update category set categoryName = #{categoryName} where id = #{id}
+	</update>
+	<delete id="deleteCaregory" parameterType="www.news.com.model.Caregory">
+		delete from category where id = #{id}
+	</delete>
+	<select id="findAllCaregory"  resultMap="categoryMap">
+		select * from category
+	</select>
+	<select id="findCaregoryById" parameterType="java.lang.Integer"  resultMap="categoryMap">
+		select id,categoryName from category where id = #{id}
+	</select>
+	
+</mapper>
